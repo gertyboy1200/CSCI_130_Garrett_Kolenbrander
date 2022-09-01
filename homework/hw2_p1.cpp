@@ -2,11 +2,11 @@
 using namespace std;
 int main()
 {
-cout << "Every C++ program";
-cout <<"\nmust have one and only one";
-cout << "main function";
-cout << "\n The escape sequence of characters";
-cout << "\nfor a newline can be placed anywhere";
-cout << "\n in the message passed to cout";
+cout << "Every C++ program\n";
+cout <<"must have one and only one main function.\n";
+cout << "The escape sequence of\n";
+cout << "characters for a newline can\n"; 
+cout << "be placed anywhere in the\n";
+cout << "message passed to cout\n";
 return 0;
 }
