@@ -11,10 +11,9 @@ int main() {
 
     c0 = 10;
     r = 0.2;
-    m = 1.65;
-    t = 10;
+    m = 2;
 
-    cout <<"for the model where m =" <<  m  << ", c(0) =" << c0 << ", and r =" << endl;
+    cout <<"for the model where m =" <<  m  << ", c(0) =" << c0 << ", and r =" << r << endl;
     cout << "input the time [in weeks] for the growth model: ";
     cin >> t;
 
