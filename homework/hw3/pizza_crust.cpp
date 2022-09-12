@@ -7,11 +7,12 @@ int main() {
     cin >> R >> C;
     if ( R == C ) {
         crust_percent = 0;
-        cout << crust_percent;  
+        cout << setprecision(15) << crust_percent;  
         return 0;
     }
+    
     crust_percent = ((C * C)/(R * R)) * 100;
-    cout << setprecision(7)<< crust_percent;
+    cout << setprecision(15)<< crust_percent;
     return 0;
    
 }

@@ -2,14 +2,12 @@
 // Date: 5 September, 2022
 // Description: Practice with Manipulators
 
-
 /*
 How do you know the result your program produced is correct? i did the calculations by hand
 d. What do you think will happen if you use the points (2,3) and (2,4), 
 which results in a divi- sion by zero? How do you think this situation can be handled?
 There will be an error, a simple solution would be to add an if statement to check if the 2 x values are identical.
 */
-
 
 #include <iostream>
 #include <iomanip>
