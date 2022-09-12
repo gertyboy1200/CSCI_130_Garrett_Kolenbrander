@@ -9,9 +9,9 @@ int main() {
     int c0;
     double a, r, ct, m, t;
 
-    c0 = 10;
+    c0 = 5;
     r = 0.2;
-    m = 2;
+    m = 1.65;
 
     cout <<"for the model where m =" <<  m  << ", c(0) =" << c0 << ", and r =" << r << endl;
     cout << "input the time [in weeks] for the growth model: ";
