@@ -28,4 +28,7 @@ int main() {
     cout << setw(10) << "your number is being evaluated..." << "\n";
     cout << setw(10) << "c(" << t/7.0 << ") = " << ct << endl;
 
+    cout << "we reccomend trying the following points: \n";
+    cout << setw(5) << setfill('*') << 10 << setw(7) << setfill('*') << 20 << setw(7) << setfill('#') << 50 << endl;
+
 }
