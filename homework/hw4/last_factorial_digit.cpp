@@ -11,9 +11,11 @@ int main() {
         cin >> N;
         for(i=1; i<=N; i++)
         fact = fact * i;
-        cout <<fact << endl;
+        fact = fact % 10;
+        cout << fact << endl;
         Ln--;
         fact = 1;
+
    }
 
 
