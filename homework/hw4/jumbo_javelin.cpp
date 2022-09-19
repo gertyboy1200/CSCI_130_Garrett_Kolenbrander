@@ -5,6 +5,7 @@ using namespace std;
 int main () {
     int T, N_1, total;
     total = 0;
+    
     cin >> T;
 
     while (T > 1) {
@@ -15,4 +16,5 @@ int main () {
 
     total = total + N_1;
     cout << "final total: " << total;
+    
 }
