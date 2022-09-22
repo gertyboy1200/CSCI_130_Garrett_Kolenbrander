@@ -11,12 +11,12 @@
 using namespace std;
 
 int main() {
-
+    cout << "test";
     int data_temp;
     ifstream inFile;
     inFile.open("NumberData1.txt");
 
-    while  ( (inFile >> data_temp) ) {
+    while  (!inFile.eof()) {
         inFile >> data_temp;
         cout << data_temp << endl;
 

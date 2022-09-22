@@ -11,13 +11,15 @@
 using namespace std;
 
 int main() {
-
+    cout << "test";
     string first_name;
     string date;
     int test_result;
 
     fstream inFile;
     ofstream outFile;
+
+    cout << "test" << endl
 
     inFile.open("TestResultsData.dat");
 
