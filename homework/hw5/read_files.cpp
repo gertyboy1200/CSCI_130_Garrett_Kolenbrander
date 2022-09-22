@@ -22,7 +22,7 @@ int main() {
     ofstream outFile;
 
 
-    inFile.open("TestResultsData.txt");
+    inFile.open("TestResultsData.dat");
 
     if (inFile.is_open()) {
         cout << "the file is open" << endl;
@@ -52,5 +52,18 @@ int main() {
     cout << "number of cases tested: " << count << endl;
 
     inFile.close();
+
+    inFile.open("TestReslutsData.dat");
+    outFile.open("AnalyzedData.txt");
+    inFile >> date;
+    cout << date << endl;
+
+    outFile << date << endl;
+    outFile << "the total number of cases: " << total_cases << endl;
+    outFile << "number of cases tested: " << count << endl;
+    outFile << fixed << showpoint << setprecision(2);
+    outFile << "the prevalence is: ";
+    outFile << ((static_cast<double>(total_cases)) / count) * 100 << "%";
+    outFile.close();
 
 }
