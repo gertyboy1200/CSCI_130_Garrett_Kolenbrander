@@ -3,13 +3,23 @@
 using namespace std;
 
 int main() {
-    int N, a, f1, f2, f3, f4, f5, f6;
+    int N, a, modulo, total, count = 0, f5, f6;
     int b = 42;
+    int total_sub_input = 0;
 
     cin >> N;
 
     while (N > 0){
-        cin >> f1;
+        cin >> a;
+        modulo = a % b;
+
+        cout << modulo << endl;
+        if (total_sub_input != modulo) {
+            cout << "hey";
+            count++;
+        }else {
+            continue;
+        }
 
         N--;
     }
