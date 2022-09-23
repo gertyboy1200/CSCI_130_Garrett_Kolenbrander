@@ -40,12 +40,14 @@ int main() {
     inFile >> test_result;
 
     while (inFile) {
-
-        total_cases = total_cases + test_result;
-        count++;
-
-        inFile >> first_name;
-        inFile >> test_result;
+        if (inFile == false) {
+            cout << "error";
+        }else {
+            total_cases = total_cases + test_result;
+            count++;
+            inFile >> first_name;
+            inFile >> test_result;
+        }
     }
 
     cout << "the total number of cases: " << total_cases << endl;

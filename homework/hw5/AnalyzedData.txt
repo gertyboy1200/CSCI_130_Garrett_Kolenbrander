@@ -1,4 +1,4 @@
 09.01.2020
-the total number of cases: 4
-number of cases tested: 77
-the prevalence is: 5.19%
+the total number of cases: 1
+number of cases tested: 3
+the prevalence is: 33.33%
