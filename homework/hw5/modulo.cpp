@@ -15,7 +15,7 @@ int main() {
 
         cout << modulo << endl;
         if (total_sub_input != modulo) {
-            cout << "hey";
+            
             count++;
         }else {
             continue;
