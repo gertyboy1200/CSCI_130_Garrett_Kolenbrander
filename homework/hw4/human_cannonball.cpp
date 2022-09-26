@@ -3,12 +3,14 @@
 using namespace std;
 
 int main() {
+    
     double v0, theta, x1, h1, h2, N, t, v0x, yt, cos_theta, sin_theta, xc, xs;
     const double g = 9.81;
     
     cin >> N;
     
     while (N > 0) {
+        
         cin >> v0 >> theta >> x1 >> h1 >> h2;
         
         xc = theta*3.14159/180;

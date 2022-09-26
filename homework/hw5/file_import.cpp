@@ -1,8 +1,3 @@
-/* Programmer Garrett Kolenbrander
-    Date: September 19, 2022
-    CSCI_130
-    */
-
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -22,7 +17,7 @@ int main() {
     ofstream outFile;
 
 
-    inFile.open("TestResultsData.dat");
+    inFile.open("TestResultsData.txt");
 
     if (inFile.is_open()) {
         cout << "the file is open" << endl;
@@ -31,9 +26,9 @@ int main() {
 
         cout << "cant open file";
     }
-    
-    
-    
+
+
+
     inFile >> date;
     cout << "the date is: " << date << endl;
     inFile >> first_name;
@@ -48,6 +43,7 @@ int main() {
             inFile >> first_name;
             inFile >> test_result;
         }
+    
     }
 
     cout << "the total number of cases: " << total_cases << endl;

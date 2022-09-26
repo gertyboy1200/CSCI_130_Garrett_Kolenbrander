@@ -1,8 +1,3 @@
-/* Programmer Garrett Kolenbrander
-    Date: September 19, 2022
-    CSCI_130
-    */
-
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -11,15 +6,15 @@
 using namespace std;
 
 int main() {
-    cout << "test";
+
     int data_temp;
     int total = 0;
     int counter = 0;
+    
     ifstream inFile;
     inFile.open("NumberData1.txt");
 
     while  (inFile >> data_temp) {
-
         if (data_temp >= 0) {
             total = total + data_temp;
             counter++;
@@ -29,7 +24,9 @@ int main() {
         }
 
     }
+
     cout << "the sum of the valid data is: " << total << endl;
     cout  << "the total number of data points is: " << counter << endl;
     cout << "the average of the valid data is: " << total / counter << endl;
+
 }

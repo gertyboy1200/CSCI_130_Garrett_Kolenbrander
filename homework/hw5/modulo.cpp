@@ -3,6 +3,7 @@
 using namespace std;
 
 int main() {
+    
     int N, a, modulo, total, count = 0, f5, f6;
     int b = 42;
     int total_sub_input = 0;
