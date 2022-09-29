@@ -1,8 +1,8 @@
 #include <iostream>
-
 using namespace std;
+
 int month_conversion();
-string astro_sign();
+
 int main(){
 
     int day, t;
@@ -141,4 +141,3 @@ int month_conversion() {
 
     return int_month;
 }
-

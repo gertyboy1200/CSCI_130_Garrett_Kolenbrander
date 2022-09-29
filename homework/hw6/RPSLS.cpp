@@ -13,12 +13,11 @@ Last Modified on: 9/2020
 
 using namespace std;
 
-//////////////////// Prototype Functions /////////////////////////////////////
 void TranslatePick(int flag_who, char selection);
 char ComputerSelectRPSLK();
 void declare_winner();
+string GiveFeedback();
 
-//////////////////// MAIN ////////////////////////////////////////////////////
 int main()
 {
     // declare vars
@@ -28,74 +27,87 @@ int main()
     
     
     // Display rules of the game.
+    cout << "\n";
+    cout << "\n";
+    cout << "\n";
     cout << "It's time to play Rock, Paper, Scissors, Lizard, Spock!" << endl;
     cout << "Use R (for Rock), P (for Paper), S (for Scissors), ";
     cout << "L (for Lizard), and K (for Spock)." << endl;
     
-    // Obtain userPick. Prompt until a valid selection is made.
-    // Inform user of computer selection
-    
-
    declare_winner();
     
-    
-    
-    // HANDOUT (PART C): Randomly display celebratory messages if user won.
-
-
-
     return 0;
 }
-void declare_winner() {
-    char userPick;                  // user's selection for game
-    bool valid_pick = false;        // flag controlled while loop for obtaining user input
-    char computerPick;
 
-    while (valid_pick == false)
-    {
-        cout << "You pick: ";
-        cin >> userPick;
-        
-        if ( (userPick == 'R') || (userPick == 'P') || (userPick == 'S' ) ||
-            (userPick == 'L') || (userPick == 'K') )
+void declare_winner() {
+    char userPick;
+    bool valid_pick = false;
+    char computerPick;
+    int count = 0;
+
+    for (int i = 0; i < 3; i++) {
+        valid_pick = false;
+        while (valid_pick == false)
         {
-            valid_pick = true;
+            cout << "\n";
+            cout << "You pick: ";
+            cin >> userPick;
+            
+            if ( (userPick == 'R') || (userPick == 'P') || (userPick == 'S' ) ||
+                (userPick == 'L') || (userPick == 'K') )
+            {
+                valid_pick = true;
+            }
+            else
+                cout << "Invalid Selection. Try again. " << endl;
         }
-        else
-            cout << "Invalid Selection. Try again. " << endl;
+        
+        // Repeat selection back to user.
+        TranslatePick(0, userPick);
+        
+        // Obtain computer selection.
+        computerPick = ComputerSelectRPSLK();
+        TranslatePick(1, computerPick);
+        
+        if ((userPick == 'R') && ((computerPick == 'K' || computerPick == 'P'))) {
+            cout << "you loose";
+        } else if ((userPick == 'R') && ((computerPick == 'S' || computerPick == 'L'))){
+            cout << "you win" << endl;
+            cout << GiveFeedback();
+            count++;
+        } else if ((userPick == 'S') && ((computerPick == 'K' || computerPick == 'R'))){
+            cout << "you loose";
+        } else if ((userPick == 'S') && ((computerPick == 'L' || computerPick == 'P'))){
+            cout << "you win" << endl;
+            cout << GiveFeedback();
+            count++;
+        } else if ((userPick == 'L') && ((computerPick == 'R' || computerPick == 'S'))){
+            cout << "you loose";
+        } else if ((userPick == 'L') && ((computerPick == 'P' || computerPick == 'K'))){
+            cout << "you win" << endl;
+            cout << GiveFeedback();
+            count++;
+        } else if ((userPick == 'P') && ((computerPick == 'S' || computerPick == 'L'))){
+            cout << "you loose";
+        } else if ((userPick == 'P') && ((computerPick == 'K' || computerPick == 'R'))){
+            cout << "you win" << endl;
+            cout << GiveFeedback();
+            count++;
+        } else if ((userPick == 'K') && ((computerPick == 'L' || computerPick == 'P'))){
+            cout << "you loose";
+        } else if ((userPick == 'K') && ((computerPick == 'R' || computerPick == 'S'))){
+            cout << "you win" << endl;
+            cout << GiveFeedback();
+            count++;
+        } else{
+            cout << "its a tie";
+        }
+        if (count >= 2) {
+            cout << "\n" << "you won the best of three!!";
+            break;
+        }
     }
-    
-    // Repeat selection back to user.
-    TranslatePick(0, userPick);
-    
-    // Obtain computer selection.
-    computerPick = ComputerSelectRPSLK();
-    TranslatePick(1, computerPick);
-    
-    if ((userPick == 'R') && ((computerPick == 'K' || computerPick == 'P'))) {
-        cout << "you loose";
-    } else if ((userPick == 'R') && ((computerPick == 'S' || computerPick == 'L'))){
-        cout << "you win";
-    } else if ((userPick == 'S') && ((computerPick == 'K' || computerPick == 'R'))){
-        cout << "you loose";
-    } else if ((userPick == 'S') && ((computerPick == 'L' || computerPick == 'P'))){
-        cout << "you win";
-    } else if ((userPick == 'L') && ((computerPick == 'R' || computerPick == 'S'))){
-        cout << "you loose";
-    } else if ((userPick == 'L') && ((computerPick == 'P' || computerPick == 'K'))){
-        cout << "you win";
-    } else if ((userPick == 'P') && ((computerPick == 'S' || computerPick == 'L'))){
-        cout << "you loose";
-    } else if ((userPick == 'P') && ((computerPick == 'K' || computerPick == 'R'))){
-        cout << "you win";
-    } else if ((userPick == 'K') && ((computerPick == 'L' || computerPick == 'P'))){
-        cout << "you win";
-    } else if ((userPick == 'K') && ((computerPick == 'R' || computerPick == 'S'))){
-        cout << "you loose";
-    } else{
-        cout << "its a tie";
-    }
-    
+    cout << "\nyou won " << count << " times!" << endl;
 }
 
 void TranslatePick(int flag_who, char selection)
@@ -166,7 +178,37 @@ char ComputerSelectRPSLK()
     return randPickChar;
 }
 
+string GiveFeedback()
+{
+    string rand_celebration;
+    int randPick;
+    
+    srand (time(NULL)); 
+    randPick = rand() % 5; 
 
+    switch (randPick)
+    {
+        case 0: 
+            rand_celebration = "Wow you are amazing!";
+            break;
+        case 1: 
+            rand_celebration = "Holy cow you are incredible!";
+            break;
+        case 2: 
+            rand_celebration = "You are a champion!";
+            break;
+        case 3: 
+            rand_celebration = "Unbelievable job!";
+            break;
+        case 4: 
+            rand_celebration = "That was awesome!";
+            break;
+        default:
+            cout << "Error in the function GiveFeedback. " << endl;
+    }
+    
+    return rand_celebration;
+}
 
 
 
