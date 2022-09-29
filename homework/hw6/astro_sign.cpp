@@ -19,16 +19,89 @@ int main(){
         {
         case 1:
             if (day <= 20) {
-                cout << "Capricorn";
+                cout << "Capricorn" << endl;
             } else {
-                cout << "Aquarius";
+                cout << "Aquarius" << endl;
             }
             break;
         case 2:
-            
-
+            if (day <= 19) {
+                cout << "Aquarius" << endl;
+            } else {
+                cout << "Pisces" << endl;
+            }
+            break;
+        case 3:
+            if (day <= 20) {
+                cout << "Pisces" << endl;
+            } else {
+                cout << "Aries" << endl;
+            }
+            break;
+        case 4:
+            if (day <= 20) {
+                cout << "Aries" << endl;
+            } else {
+                cout << "Taurus" << endl;
+            }
+            break;
+        case 5:
+            if (day <= 20) {
+                cout << "Taurus" << endl;
+            } else {
+                cout << "Gemini" << endl;
+            }
+            break;
+        case 6:
+            if (day <= 21) {
+                cout << "Gemini" << endl;
+            } else {
+                cout << "Cancer" << endl;
+            }
+            break;
+        case 7:
+            if (day <= 22) {
+                cout << "Cancer" << endl;
+            } else {
+                cout << "Leo" << endl;
+            }
+            break;
+        case  8:
+            if (day <= 22) {
+                cout << "Leo" << endl;
+            } else {
+                cout << "Virgo" << endl;
+            }
+            break;
+        case 9:
+            if (day <= 21) {
+                cout << "Virgo" << endl;
+            } else {
+                cout << "Libra" << endl;
+            }
+            break;
+        case 10:
+            if (day <= 22) {
+                cout << "Libra" << endl;
+            } else {
+                cout << "Scorpio" << endl;
+            }
+            break;
+        case 11:
+            if (day <= 22) {
+                cout << "Scorpio" << endl;
+            } else {
+                cout << "Sagittarius" << endl;
+            }
+            break;
+        case 12:
+            if (day <= 21) {
+                cout << "Sagittarius" << endl;
+            } else {
+                cout << "Capricorn" << endl;
+            }
+            break;
         }
-        month_conversion();
         t--;
     }
     
@@ -67,28 +140,5 @@ int month_conversion() {
     }
 
     return int_month;
-}
-
-string astro_sign() {
-
-    int day;
-    cin >> day;
-
-    switch (month_conversion())
-    {
-    case 1:
-        if (day <= 20) {
-            return "Capricorn";
-        } else {
-            return "Aquarius";
-        }
-        break;
-    
-    default:
-    return "invalid date";
-        break;
-    }
-    
-
 }
 
