@@ -18,7 +18,7 @@ int main() {
         cout << mod[N] << " ";
         N--;
     }
-    cout << endl;
+    cout << mod[N] << endl;
     while (l > 0){
         cin >> modulo;
         mod[modulo%42] = true;
