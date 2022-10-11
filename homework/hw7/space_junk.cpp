@@ -12,7 +12,7 @@ int main() {
 }
 
 int day_of_least_junk(int N) {
-    int day, loop_var, lowest_value;
+    int day, lowest_value;
     int array_place = 0;
     int space_junk[N];
     while (array_place < N) {
