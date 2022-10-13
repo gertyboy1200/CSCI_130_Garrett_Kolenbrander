@@ -18,7 +18,7 @@ int countDistinct(int cipher[], int N){
 }
 void values_arr(int cipher[], int N) {
     int array_place = 0;
-    int frequency[countDistinct(cipher, N)];
+    int values[countDistinct(cipher, N)];
     for (int i = 0; i < N; i++ ){
         int j;
         for (j = 0; j < i; j++){
@@ -26,17 +26,60 @@ void values_arr(int cipher[], int N) {
             break;
         } 
         if (i == j){
-            frequency[array_place] = cipher[i];
+        values[array_place] = cipher[i];
             array_place++;
         }
 
     }
-    int length = sizeof(frequency) / sizeof(frequency[0]);
+    int length = sizeof(values) / sizeof(values[0]);
     for(int x = 0; x < length; x++) {
+        cout <<values[x] << " ";
+    }
+    cout << endl;
+    int frequency[countDistinct(cipher, N)];
+    for (int i = 0; i < length; i++)
+        frequency[i] = 0;
+    
+    for (int i = 0; i < length; i++){
+        for (int j = 0; j <  N; j++){
+            if (values[i] == cipher[j]){
+                frequency[i] = frequency[i] + 1;
+            }
+        }
+    }
+     for(int x = 0; x < length; x++) {
         cout << frequency[x] << " ";
     }
+    cout << endl;
 
-}
+    int y, key_freq, key_value, j; 
+    for (y = 1; y < length; y++)
+    { 
+        key_freq = frequency[y]; 
+        key_value = values[y];
+        j = y + 1; 
+
+        while (j >= 0 && frequency[j] > key_freq)
+        { 
+            frequency[j - 1] = frequency[j]; 
+            values[j - 1] = values[j];
+            j = j + 1; 
+        } 
+        frequency[j - 1] = key_freq; 
+        values[j - 1] = key_value;
+    } 
+
+     for(int x = 0; x < length; x++) {
+        cout << frequency[x] << " ";
+    }
+    cout << endl;
+     for(int x = 0; x < length; x++) {
+        cout << values[x] << " ";
+    }
+    cout << endl;
+} 
+
+
 
 int main(){
     int C, N, index = 0, val;
