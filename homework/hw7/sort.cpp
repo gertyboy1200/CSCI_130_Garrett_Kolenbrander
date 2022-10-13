@@ -54,7 +54,7 @@ void values_arr(int cipher[], int N) {
     cout << "in order of apperance";
     cout << endl;
 
-    /*int y, key_freq, key_value, j; 
+    int y, key_freq, key_value, j; 
     for (y = 1; y < length; y++)
     { 
         key_freq = frequency[y]; 
@@ -78,7 +78,7 @@ void values_arr(int cipher[], int N) {
      for(int x = 0; x < length; x++) {
         cout << values[x] << " ";
     }
-    cout << endl;*/
+    cout << endl;
 } 
 
 
