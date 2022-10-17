@@ -32,10 +32,10 @@ void values_arr(int cipher[], int N) {
 
     }
     int length = sizeof(values) / sizeof(values[0]);
-    for(int x = 0; x < length; x++) {
-        cout <<values[x] << " ";
-    }
-    cout << endl;
+    //for(int x = 0; x < length; x++) {
+      //  cout <<values[x] << " ";
+    //}
+    //cout << endl;
     int frequency[countDistinct(cipher, N)];
     for (int i = 0; i < length; i++)
         frequency[i] = 0;
@@ -47,10 +47,10 @@ void values_arr(int cipher[], int N) {
             }
         }
     }
-     for(int x = 0; x < length; x++) {
-        cout << frequency[x] << " ";
-    }
-    cout << endl;
+     //for(int x = 0; x < length; x++) {
+       // cout << frequency[x] << " ";
+    //}
+    //cout << endl;
 
     int i, key_f, key_v, j; 
     for (i = 1; i < length; i++)
@@ -69,6 +69,9 @@ void values_arr(int cipher[], int N) {
         frequency[j + 1] = key_f;
         values[j + 1] = key_v; 
     } 
+
+
+/*
      for(int x = 0; x < length; x++) {
         cout << frequency[x] << " ";
     }
@@ -76,20 +79,49 @@ void values_arr(int cipher[], int N) {
      for(int x = 0; x < length; x++) {
         cout << values[x] << " ";
     }
-    cout << endl;
+    cout << endl;*/
+
+
+
+
+    int total = 0;
+
+    for (int i = 0; i < length; i++){
+        total = total + frequency[i];
+    }
+
+    int final_arr[total];
+    int l = 0, freq_count = 0;
+    int values_position = 0;
+    int final_arr_position = 0;
+    while (values_position < length){
+        freq_count = frequency[values_position];
+        l = 0;
+        while ( l < freq_count){
+            final_arr[final_arr_position] = values[values_position];
+            l++;
+            final_arr_position++;
+        }
+        values_position++;
+    }
+
+    for(int x = 0; x < total; x++) {
+        cout << final_arr[x] << " ";
+    }
 }
 
 
 int main(){
     int C, N, index = 0;
     cin >> N;
+    cin >> C;
     int cipher[N];
     while (index < N) {
         cin >> cipher[index];
         index++;
     }
-    //values_arr(cipher, N);
-    int freq[5] = {3, 2, 2, 1, 1};
+    values_arr(cipher, N);
+    /*int freq[5] = {3, 2, 2, 1, 1};
     int val[5] = {11, 33, 25, 77, 54};
     int length = sizeof(freq) / sizeof(freq[0]);
     int total = 0;
@@ -119,7 +151,7 @@ int main(){
         cout << final_arr[x] << " ";
     }
 
-
+*/
 
    return 0;
 }
