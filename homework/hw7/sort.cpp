@@ -47,30 +47,28 @@ void values_arr(int cipher[], int N) {
             }
         }
     }
-    cout << "the frequency of the above values are :";
      for(int x = 0; x < length; x++) {
         cout << frequency[x] << " ";
     }
-    cout << "in order of apperance";
     cout << endl;
 
-    int y, key_freq, key_value, j; 
-    for (y = 1; y < length; y++)
+    int i, key_f, key_v, j; 
+    for (i = 1; i < length; i++)
     { 
-        key_freq = frequency[y]; 
-        key_value = values[y];
-        j = y + 1; 
-
-        while (j >= 0 && frequency[j] > key_freq)
+        key_f = frequency[i];
+        key_v = values[i]; 
+        j = i - 1; 
+  
+        while (j >= 0 && frequency[j] < key_f)
         { 
-            frequency[j - 1] = frequency[j]; 
-            values[j - 1] = values[j];
-            j = j + 1; 
-        } 
-        frequency[j - 1] = key_freq; 
-        values[j - 1] = key_value;
-    } 
+            frequency[j + 1] = frequency[j];
+            values[j + 1] = values[j];
 
+            j = j - 1; 
+        } 
+        frequency[j + 1] = key_f;
+        values[j + 1] = key_v; 
+    } 
      for(int x = 0; x < length; x++) {
         cout << frequency[x] << " ";
     }
@@ -79,19 +77,48 @@ void values_arr(int cipher[], int N) {
         cout << values[x] << " ";
     }
     cout << endl;
-} 
-
+}
 
 
 int main(){
-    int C, N, index = 0, val;
+    int C, N, index = 0;
     cin >> N;
     int cipher[N];
     while (index < N) {
         cin >> cipher[index];
         index++;
     }
-    values_arr(cipher, N);
+    //values_arr(cipher, N);
+    int freq[5] = {3, 2, 2, 1, 1};
+    int val[5] = {11, 33, 25, 77, 54};
+    int length = sizeof(freq) / sizeof(freq[0]);
+    int total = 0;
+
+    for (int i = 0; i < length; i++){
+        total = total + freq[i];
+    }
+
+    cout << total << endl;
+
+    int final_arr[total];
+    int j = 0, freq_count = 0;
+    int index = 0;
+    int final_arr_position = 0;
+    while (index < length){
+        freq_count = freq[index];
+        j = 0;
+        while ( j < freq_count){
+            final_arr[final_arr_position] = val[index];
+            j++;
+            final_arr_position++;
+        }
+        index++;
+    }
+
+    for(int x = 0; x < total; x++) {
+        cout << final_arr[x] << " ";
+    }
+
 
 
    return 0;
