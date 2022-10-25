@@ -38,10 +38,11 @@ int main() {
     }
 
     number_of_coloums = 7; 
-    
+
     for (int i = 0; i < 7; i++)
         cout << headers[i] << fixed << setw(15);
     cout << "\n";
+    
     print_matrix(grades, number_of_rows, number_of_coloums);
 
     return 0;
