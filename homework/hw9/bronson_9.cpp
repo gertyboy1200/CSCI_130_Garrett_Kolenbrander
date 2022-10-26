@@ -22,8 +22,7 @@ int average_grade_one(int grades[][7], int r, int number_of_coloums) {
 int average_grade_two(int grades[][7], int r, int number_of_coloums) {
     int sum, average;
     sum = 0.2 * grades[r][1] + 0.3 * grades[r][2] + 0.3 * grades[r][3] + 0.2 * grades[r][4];
-    average = sum / (number_of_coloums - 1);
-    return average;
+    return sum;
 }
 
 int main() {
