@@ -24,7 +24,7 @@ int main() {
     p = grading(tests, number_of_tests, correct_answers);
 
     for (int i = 0; i < 6; i++)
-        cout << *(p + i) << endl;
-        
+        cout << "the grade of test " << i + 1 << " is " << *(p + i) << endl;
+
     return 0;
     }

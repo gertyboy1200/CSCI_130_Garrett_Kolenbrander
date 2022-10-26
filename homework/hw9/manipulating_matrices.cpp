@@ -37,7 +37,7 @@ int main(){
     int number_of_coloums = 3;
     int AQI[10][3] = { {50, 68, 58}, {58, 115, 78}, {62, 110, 81}, {66, 124, 110}, {64, 152, 121}, {46, 143, 90}, {46, 143, 90}, {25, 91, 91}, {27, 19, 59}, {17, 13, 27}};
     string cities[3] = {"Grand Junction", "Fort Collins", "Denver/Boulder"};
-    print_matrix(AQI, number_of_rows, number_of_coloums);
+    //print_matrix(AQI, number_of_rows, number_of_coloums);
     for (int c = 0; c < number_of_coloums; c++){
         cout << "the number of unheathly days in " << cities[c] << " is " << find_unhealty_level(AQI, number_of_rows, c) << endl;
         cout << "the average AQI for " << cities[c] << " is " << average_AQI(AQI, number_of_rows, c) << endl;
