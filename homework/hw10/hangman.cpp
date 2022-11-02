@@ -12,11 +12,12 @@ int main() {
     int alphabet_length = alphabet.length();
     int alphabet_index = 0, win = 0, lose = 0, compare;
 
-    char word_array[word_length + 1];
-    char alphabet_array[alphabet_length + 1];
- 
+    char word_array[word_length];
+    char alphabet_array[alphabet_length];
+
     strcpy(word_array, word.c_str());
     strcpy(alphabet_array, alphabet.c_str());
+ 
 
     for (int j = 0; j < alphabet_length; j++) {
         compare = win;
