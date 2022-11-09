@@ -12,6 +12,13 @@ int main () {
     cout << 2 /3;*/
 
 
+    while (temp != '\0') {
+        count++;
+        i++;
+        temp = string[i];
+    }
+
+
   /*string line;
   while (!line.empty()){
     cin >> time;
