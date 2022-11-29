@@ -1,0 +1,20 @@
+number = floor(rand * 100);
+guess = input("enter your guess: ");
+n_guesses = 0;
+max_tries = 5;
+guesses_remaning = 5;
+
+while (n_guesses < max_tries)
+    if (guess < number)
+        disp("your number is to low");
+        guesses_remaning = guesses_remaning - 1;
+        disp("you have ", max_tries - n_guesses, " attempts left.");
+    elseif (guess > number)
+        disp("your number is to high");
+        n_guesses = n_guesses + 1;
+        disp("you have ", max_tries - n_guesses, " attempts left.");
+    else
+        disp("YOU GUESSED THE NUMBER");
+        endwhile;
+    end
+end
