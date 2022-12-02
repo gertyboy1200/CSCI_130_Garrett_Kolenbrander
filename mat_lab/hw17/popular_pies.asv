@@ -1,0 +1,25 @@
+MyCell = readcell('PieInterest.xlsx');
+PieOrder = { MyCell{1,2} MyCell{1,4} MyCell{1,6} MyCell{1,8} MyCell{1,10} MyCell{1, 12}};
+Interest = [ MyCell{2:end,2}; MyCell{2:end,4}; MyCell{2:end,6}; MyCell{2:end,8}; MyCell{2:end,10}; MyCell{2:end,12}; ];
+Interest = Interest';
+
+avg_int = mean(Interest);
+[M_best, best_pie] = max(avg_int);
+[M_worst, worst_pie] = min(avg_int);
+
+disp(['The most popular pie is ' PieOrder{best_pie}]);
+disp(['The least popular pie is ' PieOrder{worst_pie}]);
+
+
+
+count = 1;
+
+for i = [1:2:12] % loop for all types of pies through each odd column
+    for n = 2:1:length(MyCell(:,1)) % loop for the row starting with 2
+        if strcmp('Colorado', MyCell{n,i})
+            COloc[count] = n - 1; % -1 because the 1st row is just names
+            count = count + 1;
+            break;
+        end
+    end
+end
