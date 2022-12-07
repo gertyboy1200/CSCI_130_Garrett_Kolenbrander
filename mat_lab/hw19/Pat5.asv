@@ -1,0 +1,16 @@
+function [output_value] = Pat5(volume_data)
+
+    for n = 1:(length(volume_data) / 2)
+        if (volume_data(n) - 5) < 0
+            
+        else if (abs(volume_data(n) - 5)) > (abs(volume_data(n - 1) - 5))
+            output_value = volume_data(n - 1);
+            break;   
+            
+            
+            output_value = volume_data(n - 1);
+            break;
+        end
+    end
+
+end
