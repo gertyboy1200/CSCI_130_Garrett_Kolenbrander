@@ -1,0 +1,263 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>KOLENBRADER_Final_Q2</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-13"><meta name="DC.source" content="KOLENBRADER_Final_Q2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">clear <span class="string">all</span>
+close <span class="string">all</span>
+clc
+
+the_file_name = <span class="string">"M4-10_snapdat.xlsx"</span>;
+T = get_data(the_file_name);
+
+inputs = [<span class="string">"P V"</span>, <span class="string">"T P"</span>, <span class="string">"T V"</span>];
+
+proper_input = false;
+data_inputs = zeros(1, 2);
+
+<span class="keyword">while</span> proper_input == false
+    disp(<span class="string">"Enter the type of graph you wish to plot."</span>)
+    disp(<span class="string">"The options are Volume vs Pressure, Pressure vs Time, Volume vs Time."</span>)
+    <span class="comment">%user_input = input("Please input in the 'P V', 'T P', 'T V' syntax:  ", "s");</span>
+    user_input = <span class="string">'T P'</span>;
+    disp(<span class="string">"please select 2 different numbers 1 - 8 inclusive"</span>)
+
+<span class="comment">    %{
+</span><span class="comment">    for i = 1:2
+</span><span class="comment">        data_inputs(i) = input("Enter " + i + "/2 data points:  ");
+</span><span class="comment">    end
+</span><span class="comment">    %}
+</span>
+    data_inputs = [1, 8];
+
+    <span class="keyword">for</span> n = 1:length(inputs)
+        <span class="keyword">if</span> user_input == inputs(n) &amp;&amp; 1 &lt;= data_inputs(1) &amp;&amp; data_inputs(1) &lt;= 8 &amp;&amp; 1 &lt;= data_inputs(2) &amp;&amp; data_inputs(2) &lt;= 8
+            proper_input = true;
+            <span class="keyword">break</span>
+        <span class="keyword">end</span>
+
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> proper_input == true &amp;&amp; (data_inputs(1) ~= data_inputs(2))
+        disp(<span class="string">"loading plot please wait..."</span>)
+    <span class="keyword">else</span>
+        clc
+        disp(<span class="string">"Improper input please reread the instructions and try again."</span>, <span class="string">'r'</span>)
+        proper_input = false;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+
+<span class="keyword">for</span> n = 1:2
+    times(n) = (((data_inputs(n) - 1) * 15) + 5);
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> user_input == <span class="string">"P V"</span>
+
+    graph_lines = get_graph_lines(user_input, data_inputs);
+
+    plot(T.(graph_lines(1)), T.(graph_lines(2)), <span class="string">'b'</span>, LineStyle=<span class="string">"-."</span>, LineWidth=1.35)
+    hold <span class="string">on</span>
+    plot(T.(graph_lines(3)), T.(graph_lines(4)), <span class="string">'r'</span>, LineStyle=<span class="string">"-."</span>, LineWidth=1.35)
+    legend(times(1) + <span class="string">" minutes in"</span>, times(2) + <span class="string">" minutes in"</span>)
+    title(<span class="string">"Volume vs. Pressue"</span>)
+    xlabel(<span class="string">"Pressure [cm/H2O]"</span>)
+    ylabel(<span class="string">"Volume [ml]"</span>)
+
+<span class="keyword">elseif</span> user_input == <span class="string">"T P"</span>
+
+    graph_lines = get_graph_lines(user_input, data_inputs);
+
+    plot(T.(graph_lines(1)), T.(graph_lines(2)), <span class="string">'b'</span>, LineStyle=<span class="string">"-."</span>, LineWidth=1.35)
+    hold <span class="string">on</span>
+    plot(T.(graph_lines(3)), T.(graph_lines(4)), <span class="string">'r'</span>, LineStyle=<span class="string">"-."</span>, LineWidth=1.35)
+    yline(mean(T.(graph_lines(4))), <span class="string">'k'</span>, LineWidth=0.9)
+    legend(times(1) + <span class="string">" minutes in"</span>, times(2) + <span class="string">" minutes in"</span>, <span class="string">"Average Pressure"</span>)
+    title(<span class="string">"Pressure vs. Time"</span>)
+    xlabel(<span class="string">"Time [s]"</span>)
+    ylabel(<span class="string">"Pressure [cm/H2O]"</span>)
+
+<span class="keyword">elseif</span> user_input == <span class="string">"T V"</span>
+
+    graph_lines = get_graph_lines(user_input, data_inputs);
+
+    plot(T.(graph_lines(1)), T.(graph_lines(2)), <span class="string">'b'</span>, LineStyle=<span class="string">"-."</span>, LineWidth=1.35)
+    hold <span class="string">on</span>
+    plot(T.(graph_lines(3)), T.(graph_lines(4)), <span class="string">'r'</span>, LineStyle=<span class="string">"-."</span>, LineWidth=1.35)
+    yline(mean(T.(graph_lines(4))), <span class="string">'k'</span>, LineWidth=0.9)
+    legend(times(1) + <span class="string">" minutes in"</span>, times(2) + <span class="string">" minutes in"</span>, <span class="string">"Average Volume"</span>)
+    title(<span class="string">"Volume vs. Time"</span>)
+    xlabel(<span class="string">"Time [s]"</span>)
+    ylabel(<span class="string">"Volume [ml]"</span>)
+
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> [output] = get_data(the_file_name)
+   output = readtable(the_file_name) ;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">Enter the type of graph you wish to plot.
+The options are Volume vs Pressure, Pressure vs Time, Volume vs Time.
+please select 2 different numbers 1 - 8 inclusive
+loading plot please wait...
+</pre><img vspace="5" hspace="5" src="KOLENBRADER_Final_Q2_01.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clear all
+close all
+clc
+
+the_file_name = "M4-10_snapdat.xlsx";
+T = get_data(the_file_name);
+
+inputs = ["P V", "T P", "T V"];
+
+proper_input = false;
+data_inputs = zeros(1, 2);
+
+while proper_input == false
+    disp("Enter the type of graph you wish to plot.")
+    disp("The options are Volume vs Pressure, Pressure vs Time, Volume vs Time.")
+    %user_input = input("Please input in the 'P V', 'T P', 'T V' syntax:  ", "s");
+    user_input = 'T P';
+    disp("please select 2 different numbers 1 - 8 inclusive")
+    
+    %{
+    for i = 1:2
+        data_inputs(i) = input("Enter " + i + "/2 data points:  ");
+    end
+    %}
+
+    data_inputs = [1, 8];
+
+    for n = 1:length(inputs)
+        if user_input == inputs(n) && 1 <= data_inputs(1) && data_inputs(1) <= 8 && 1 <= data_inputs(2) && data_inputs(2) <= 8
+            proper_input = true;
+            break
+        end
+
+    end
+    
+    if proper_input == true && (data_inputs(1) ~= data_inputs(2))
+        disp("loading plot please wait...")
+    else
+        clc
+        disp("Improper input please reread the instructions and try again.", 'r')
+        proper_input = false;
+    end
+end
+
+
+for n = 1:2
+    times(n) = (((data_inputs(n) - 1) * 15) + 5);
+end
+
+if user_input == "P V"
+    
+    graph_lines = get_graph_lines(user_input, data_inputs);
+
+    plot(T.(graph_lines(1)), T.(graph_lines(2)), 'b', LineStyle="-.", LineWidth=1.35)
+    hold on
+    plot(T.(graph_lines(3)), T.(graph_lines(4)), 'r', LineStyle="-.", LineWidth=1.35)
+    legend(times(1) + " minutes in", times(2) + " minutes in")
+    title("Volume vs. Pressue")
+    xlabel("Pressure [cm/H2O]")
+    ylabel("Volume [ml]")
+
+elseif user_input == "T P"
+
+    graph_lines = get_graph_lines(user_input, data_inputs);
+
+    plot(T.(graph_lines(1)), T.(graph_lines(2)), 'b', LineStyle="-.", LineWidth=1.35)
+    hold on
+    plot(T.(graph_lines(3)), T.(graph_lines(4)), 'r', LineStyle="-.", LineWidth=1.35)
+    yline(mean(T.(graph_lines(4))), 'k', LineWidth=0.9)
+    legend(times(1) + " minutes in", times(2) + " minutes in", "Average Pressure")
+    title("Pressure vs. Time")
+    xlabel("Time [s]")
+    ylabel("Pressure [cm/H2O]")
+
+elseif user_input == "T V"
+
+    graph_lines = get_graph_lines(user_input, data_inputs);
+
+    plot(T.(graph_lines(1)), T.(graph_lines(2)), 'b', LineStyle="-.", LineWidth=1.35)
+    hold on
+    plot(T.(graph_lines(3)), T.(graph_lines(4)), 'r', LineStyle="-.", LineWidth=1.35)
+    yline(mean(T.(graph_lines(4))), 'k', LineWidth=0.9)
+    legend(times(1) + " minutes in", times(2) + " minutes in", "Average Volume")
+    title("Volume vs. Time")
+    xlabel("Time [s]")
+    ylabel("Volume [ml]")
+
+end
+
+function [output] = get_data(the_file_name)
+   output = readtable(the_file_name) ;
+end
+
+
+##### SOURCE END #####
+--></body></html>
