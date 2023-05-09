@@ -31,7 +31,7 @@ int checkGuess(int userInout, int computerInput){
     }
 }
 
-int main() {
+void game(){
     string name;
     int guess;
     char playAgain = 'y';
@@ -51,14 +51,20 @@ int main() {
                 cout << "You guessed the number in " << i + 1 << " tries! Would you like to play again enter Y/y. enter anything else to quit: ";
                 cin >> playAgain;
                 break;
+            } else if (i > 5){
+                cout << "You failed to guess my number. The secret number was " << computerInput << ". Would you like to play again enter Y/y. enter anything else to quit: ";
+                cin >> playAgain;
+                break;
             }else if (checkGuess(guess, computerInput) == -1){
                 cout << "Your guess is too low. Try again!" << endl << "Your new guess: ";
             } else if (checkGuess(guess, computerInput) == 2){
                 cout << "Your guess was too high. Try again!" << endl << "Your new guess: ";
-            } else if (i > 4){
-                cout << "You failed to guess my number. Would you like to play again enter Y/y. enter anything else to quit: ";
             }
         }
     }
+}
+
+int main() {
+    game();
 return 0;
 }
